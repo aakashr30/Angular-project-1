@@ -1,0 +1,74 @@
+<body>
+    <h1>Admission Form!!!</h1>
+
+    <form [formGroup]="userForm" id="fr" (submit)="addItem()">
+        <div id="Nd">
+            <!--************************************************-->
+            <div class="namegap">
+                <!--************************************************-->
+                <label>Name:</label>
+                <input type="text" placeholder="Enter Name" formControlName="name" >
+                <!--small class="text-danger"  [class.d-none]="userForm.valid|| userForm.untouched">Name is Required</small-->
+                <br>
+                <br>
+                <br>
+                <!--************************************************-->
+                <label required>DOB:</label>
+                <input type="date" formControlName="DOB" required>
+            </div>
+            <br>
+            <br>
+            <br>
+            <!--************************************************-->
+            <div class="genoth">
+                <label for="gender">Gender:</label>
+                <select id="genders" formControlName="gender" name="gender" required>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Others</option>
+                </select>
+                <br>
+                <br>
+                <br>
+            
+
+                <!--************************************************-->
+                <label for="City">City:</label>
+                <input type="text" formControlName="city" required>
+            </div>
+        </div>
+        <!--************************************************-->
+
+        <br>
+        <br>
+        <div id="but">
+            <button type="submit" class="add">Submit</button>
+            <button class="clear" (click)="reset()">Clear</button>
+        </div>
+
+    </form>
+    <br>
+    <br>
+    <hr>
+    <hr>
+    <div class="ftable">
+        <table class="save table">
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>DoB</th>
+                <th>Gender</th>
+                <th>City</th>
+                <th>Action</th>
+            </tr>
+            <tr *ngFor="let item of listData;let i=index">
+                <td><span>{{i+1}}</span></td>
+                <td><span>{{item.name}}</span></td>
+                <td><span>{{item.DOB}}</span></td>
+                <td><span>{{item.gender}}</span></td>
+                <td><span>{{item.city}}</span></td>
+                <td><button class="remove" (click)="removeItem(i)">Remove</button></td>
+            </tr>
+        </table>
+    </div>
+</body>
